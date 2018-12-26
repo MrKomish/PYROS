@@ -1,0 +1,1 @@
+/opt/cross-compiler/i686-elf/out/path/bin/i686-elf-gcc  -ffreestanding -g   -nostdlib -T ../src/linker.ld CMakeFiles/pyros.elf.dir/src/gdt.asm.obj CMakeFiles/pyros.elf.dir/src/gdt.c.obj CMakeFiles/pyros.elf.dir/src/gdtlib.c.obj CMakeFiles/pyros.elf.dir/src/init.asm.obj CMakeFiles/pyros.elf.dir/src/main.c.obj CMakeFiles/pyros.elf.dir/src/multiboot.asm.obj  -o pyros.elf 

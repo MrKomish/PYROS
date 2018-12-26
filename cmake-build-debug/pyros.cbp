@@ -87,6 +87,15 @@
 		<Unit filename="/home/komish/Desktop/pyros-clean/src/gdtlib.h">
 			<Option target="pyros.elf"/>
 		</Unit>
+		<Unit filename="/home/komish/Desktop/pyros-clean/src/idt.c">
+			<Option target="pyros.elf"/>
+		</Unit>
+		<Unit filename="/home/komish/Desktop/pyros-clean/src/idt.h">
+			<Option target="pyros.elf"/>
+		</Unit>
+		<Unit filename="/home/komish/Desktop/pyros-clean/src/idtlib.c">
+			<Option target="pyros.elf"/>
+		</Unit>
 		<Unit filename="/home/komish/Desktop/pyros-clean/src/init.asm">
 			<Option target="pyros.elf"/>
 		</Unit>
@@ -97,6 +106,12 @@
 			<Option target="pyros.elf"/>
 		</Unit>
 		<Unit filename="/home/komish/Desktop/pyros-clean/src/multiboot.asm">
+			<Option target="pyros.elf"/>
+		</Unit>
+		<Unit filename="/home/komish/Desktop/pyros-clean/src/util.c">
+			<Option target="pyros.elf"/>
+		</Unit>
+		<Unit filename="/home/komish/Desktop/pyros-clean/src/util.h">
 			<Option target="pyros.elf"/>
 		</Unit>
 		<Unit filename="/home/komish/Desktop/pyros-clean/CMakeLists.txt">

@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef PYROS_MAIN_H
 #define PYROS_MAIN_H
 

@@ -88,14 +88,40 @@ CMakeFiles/pyros.elf.dir/src/gdtlib.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/pyros.elf.dir/src/gdtlib.c.s"
 	/opt/cross-compiler/i686-elf/out/path/bin/i686-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/komish/Desktop/pyros-clean/src/gdtlib.c -o CMakeFiles/pyros.elf.dir/src/gdtlib.c.s
 
+CMakeFiles/pyros.elf.dir/src/idt.c.obj: CMakeFiles/pyros.elf.dir/flags.make
+CMakeFiles/pyros.elf.dir/src/idt.c.obj: ../src/idt.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/komish/Desktop/pyros-clean/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/pyros.elf.dir/src/idt.c.obj"
+	/opt/cross-compiler/i686-elf/out/path/bin/i686-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/pyros.elf.dir/src/idt.c.obj   -c /home/komish/Desktop/pyros-clean/src/idt.c
+
+CMakeFiles/pyros.elf.dir/src/idt.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/pyros.elf.dir/src/idt.c.i"
+	/opt/cross-compiler/i686-elf/out/path/bin/i686-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/komish/Desktop/pyros-clean/src/idt.c > CMakeFiles/pyros.elf.dir/src/idt.c.i
+
+CMakeFiles/pyros.elf.dir/src/idt.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/pyros.elf.dir/src/idt.c.s"
+	/opt/cross-compiler/i686-elf/out/path/bin/i686-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/komish/Desktop/pyros-clean/src/idt.c -o CMakeFiles/pyros.elf.dir/src/idt.c.s
+
+CMakeFiles/pyros.elf.dir/src/idtlib.c.obj: CMakeFiles/pyros.elf.dir/flags.make
+CMakeFiles/pyros.elf.dir/src/idtlib.c.obj: ../src/idtlib.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/komish/Desktop/pyros-clean/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/pyros.elf.dir/src/idtlib.c.obj"
+	/opt/cross-compiler/i686-elf/out/path/bin/i686-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/pyros.elf.dir/src/idtlib.c.obj   -c /home/komish/Desktop/pyros-clean/src/idtlib.c
+
+CMakeFiles/pyros.elf.dir/src/idtlib.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/pyros.elf.dir/src/idtlib.c.i"
+	/opt/cross-compiler/i686-elf/out/path/bin/i686-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/komish/Desktop/pyros-clean/src/idtlib.c > CMakeFiles/pyros.elf.dir/src/idtlib.c.i
+
+CMakeFiles/pyros.elf.dir/src/idtlib.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/pyros.elf.dir/src/idtlib.c.s"
+	/opt/cross-compiler/i686-elf/out/path/bin/i686-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/komish/Desktop/pyros-clean/src/idtlib.c -o CMakeFiles/pyros.elf.dir/src/idtlib.c.s
+
 CMakeFiles/pyros.elf.dir/src/init.asm.obj: CMakeFiles/pyros.elf.dir/flags.make
 CMakeFiles/pyros.elf.dir/src/init.asm.obj: ../src/init.asm
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/komish/Desktop/pyros-clean/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building ASM_NASM object CMakeFiles/pyros.elf.dir/src/init.asm.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/komish/Desktop/pyros-clean/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building ASM_NASM object CMakeFiles/pyros.elf.dir/src/init.asm.obj"
 	/usr/bin/nasm $(ASM_NASM_INCLUDES)     $(ASM_NASM_FLAGS) -f elf -o CMakeFiles/pyros.elf.dir/src/init.asm.obj /home/komish/Desktop/pyros-clean/src/init.asm
 
 CMakeFiles/pyros.elf.dir/src/main.c.obj: CMakeFiles/pyros.elf.dir/flags.make
 CMakeFiles/pyros.elf.dir/src/main.c.obj: ../src/main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/komish/Desktop/pyros-clean/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/pyros.elf.dir/src/main.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/komish/Desktop/pyros-clean/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/pyros.elf.dir/src/main.c.obj"
 	/opt/cross-compiler/i686-elf/out/path/bin/i686-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/pyros.elf.dir/src/main.c.obj   -c /home/komish/Desktop/pyros-clean/src/main.c
 
 CMakeFiles/pyros.elf.dir/src/main.c.i: cmake_force
@@ -108,17 +134,33 @@ CMakeFiles/pyros.elf.dir/src/main.c.s: cmake_force
 
 CMakeFiles/pyros.elf.dir/src/multiboot.asm.obj: CMakeFiles/pyros.elf.dir/flags.make
 CMakeFiles/pyros.elf.dir/src/multiboot.asm.obj: ../src/multiboot.asm
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/komish/Desktop/pyros-clean/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building ASM_NASM object CMakeFiles/pyros.elf.dir/src/multiboot.asm.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/komish/Desktop/pyros-clean/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building ASM_NASM object CMakeFiles/pyros.elf.dir/src/multiboot.asm.obj"
 	/usr/bin/nasm $(ASM_NASM_INCLUDES)     $(ASM_NASM_FLAGS) -f elf -o CMakeFiles/pyros.elf.dir/src/multiboot.asm.obj /home/komish/Desktop/pyros-clean/src/multiboot.asm
+
+CMakeFiles/pyros.elf.dir/src/util.c.obj: CMakeFiles/pyros.elf.dir/flags.make
+CMakeFiles/pyros.elf.dir/src/util.c.obj: ../src/util.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/komish/Desktop/pyros-clean/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/pyros.elf.dir/src/util.c.obj"
+	/opt/cross-compiler/i686-elf/out/path/bin/i686-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/pyros.elf.dir/src/util.c.obj   -c /home/komish/Desktop/pyros-clean/src/util.c
+
+CMakeFiles/pyros.elf.dir/src/util.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/pyros.elf.dir/src/util.c.i"
+	/opt/cross-compiler/i686-elf/out/path/bin/i686-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/komish/Desktop/pyros-clean/src/util.c > CMakeFiles/pyros.elf.dir/src/util.c.i
+
+CMakeFiles/pyros.elf.dir/src/util.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/pyros.elf.dir/src/util.c.s"
+	/opt/cross-compiler/i686-elf/out/path/bin/i686-elf-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/komish/Desktop/pyros-clean/src/util.c -o CMakeFiles/pyros.elf.dir/src/util.c.s
 
 # Object files for target pyros.elf
 pyros_elf_OBJECTS = \
 "CMakeFiles/pyros.elf.dir/src/gdt.asm.obj" \
 "CMakeFiles/pyros.elf.dir/src/gdt.c.obj" \
 "CMakeFiles/pyros.elf.dir/src/gdtlib.c.obj" \
+"CMakeFiles/pyros.elf.dir/src/idt.c.obj" \
+"CMakeFiles/pyros.elf.dir/src/idtlib.c.obj" \
 "CMakeFiles/pyros.elf.dir/src/init.asm.obj" \
 "CMakeFiles/pyros.elf.dir/src/main.c.obj" \
-"CMakeFiles/pyros.elf.dir/src/multiboot.asm.obj"
+"CMakeFiles/pyros.elf.dir/src/multiboot.asm.obj" \
+"CMakeFiles/pyros.elf.dir/src/util.c.obj"
 
 # External object files for target pyros.elf
 pyros_elf_EXTERNAL_OBJECTS =
@@ -126,13 +168,16 @@ pyros_elf_EXTERNAL_OBJECTS =
 pyros.elf: CMakeFiles/pyros.elf.dir/src/gdt.asm.obj
 pyros.elf: CMakeFiles/pyros.elf.dir/src/gdt.c.obj
 pyros.elf: CMakeFiles/pyros.elf.dir/src/gdtlib.c.obj
+pyros.elf: CMakeFiles/pyros.elf.dir/src/idt.c.obj
+pyros.elf: CMakeFiles/pyros.elf.dir/src/idtlib.c.obj
 pyros.elf: CMakeFiles/pyros.elf.dir/src/init.asm.obj
 pyros.elf: CMakeFiles/pyros.elf.dir/src/main.c.obj
 pyros.elf: CMakeFiles/pyros.elf.dir/src/multiboot.asm.obj
+pyros.elf: CMakeFiles/pyros.elf.dir/src/util.c.obj
 pyros.elf: CMakeFiles/pyros.elf.dir/build.make
 pyros.elf: ../src/linker.ld
 pyros.elf: CMakeFiles/pyros.elf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/komish/Desktop/pyros-clean/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable pyros.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/komish/Desktop/pyros-clean/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking C executable pyros.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pyros.elf.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

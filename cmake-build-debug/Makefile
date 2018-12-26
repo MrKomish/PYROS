@@ -186,6 +186,60 @@ src/gdtlib.c.s:
 	$(MAKE) -f CMakeFiles/pyros.elf.dir/build.make CMakeFiles/pyros.elf.dir/src/gdtlib.c.s
 .PHONY : src/gdtlib.c.s
 
+src/idt.obj: src/idt.c.obj
+
+.PHONY : src/idt.obj
+
+# target to build an object file
+src/idt.c.obj:
+	$(MAKE) -f CMakeFiles/pyros.elf.dir/build.make CMakeFiles/pyros.elf.dir/src/idt.c.obj
+.PHONY : src/idt.c.obj
+
+src/idt.i: src/idt.c.i
+
+.PHONY : src/idt.i
+
+# target to preprocess a source file
+src/idt.c.i:
+	$(MAKE) -f CMakeFiles/pyros.elf.dir/build.make CMakeFiles/pyros.elf.dir/src/idt.c.i
+.PHONY : src/idt.c.i
+
+src/idt.s: src/idt.c.s
+
+.PHONY : src/idt.s
+
+# target to generate assembly for a file
+src/idt.c.s:
+	$(MAKE) -f CMakeFiles/pyros.elf.dir/build.make CMakeFiles/pyros.elf.dir/src/idt.c.s
+.PHONY : src/idt.c.s
+
+src/idtlib.obj: src/idtlib.c.obj
+
+.PHONY : src/idtlib.obj
+
+# target to build an object file
+src/idtlib.c.obj:
+	$(MAKE) -f CMakeFiles/pyros.elf.dir/build.make CMakeFiles/pyros.elf.dir/src/idtlib.c.obj
+.PHONY : src/idtlib.c.obj
+
+src/idtlib.i: src/idtlib.c.i
+
+.PHONY : src/idtlib.i
+
+# target to preprocess a source file
+src/idtlib.c.i:
+	$(MAKE) -f CMakeFiles/pyros.elf.dir/build.make CMakeFiles/pyros.elf.dir/src/idtlib.c.i
+.PHONY : src/idtlib.c.i
+
+src/idtlib.s: src/idtlib.c.s
+
+.PHONY : src/idtlib.s
+
+# target to generate assembly for a file
+src/idtlib.c.s:
+	$(MAKE) -f CMakeFiles/pyros.elf.dir/build.make CMakeFiles/pyros.elf.dir/src/idtlib.c.s
+.PHONY : src/idtlib.c.s
+
 src/init.obj: src/init.asm.obj
 
 .PHONY : src/init.obj
@@ -231,6 +285,33 @@ src/multiboot.asm.obj:
 	$(MAKE) -f CMakeFiles/pyros.elf.dir/build.make CMakeFiles/pyros.elf.dir/src/multiboot.asm.obj
 .PHONY : src/multiboot.asm.obj
 
+src/util.obj: src/util.c.obj
+
+.PHONY : src/util.obj
+
+# target to build an object file
+src/util.c.obj:
+	$(MAKE) -f CMakeFiles/pyros.elf.dir/build.make CMakeFiles/pyros.elf.dir/src/util.c.obj
+.PHONY : src/util.c.obj
+
+src/util.i: src/util.c.i
+
+.PHONY : src/util.i
+
+# target to preprocess a source file
+src/util.c.i:
+	$(MAKE) -f CMakeFiles/pyros.elf.dir/build.make CMakeFiles/pyros.elf.dir/src/util.c.i
+.PHONY : src/util.c.i
+
+src/util.s: src/util.c.s
+
+.PHONY : src/util.s
+
+# target to generate assembly for a file
+src/util.c.s:
+	$(MAKE) -f CMakeFiles/pyros.elf.dir/build.make CMakeFiles/pyros.elf.dir/src/util.c.s
+.PHONY : src/util.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -247,11 +328,20 @@ help:
 	@echo "... src/gdtlib.obj"
 	@echo "... src/gdtlib.i"
 	@echo "... src/gdtlib.s"
+	@echo "... src/idt.obj"
+	@echo "... src/idt.i"
+	@echo "... src/idt.s"
+	@echo "... src/idtlib.obj"
+	@echo "... src/idtlib.i"
+	@echo "... src/idtlib.s"
 	@echo "... src/init.obj"
 	@echo "... src/main.obj"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
 	@echo "... src/multiboot.obj"
+	@echo "... src/util.obj"
+	@echo "... src/util.i"
+	@echo "... src/util.s"
 .PHONY : help
 
 

@@ -1,3 +1,0 @@
-/home/komish/Desktop/pyros-clean/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/komish/Desktop/pyros-clean/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/komish/Desktop/pyros-clean/cmake-build-debug/CMakeFiles/pyros.elf.dir

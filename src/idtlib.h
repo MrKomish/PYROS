@@ -31,7 +31,7 @@ void init_idt_desc(uint16_t selector, uint32_t offset, uint8_t type_attr, idt_de
 #define IDT_DESC_PRIVILEGE(x) (((x) & 0x02) << 0x05) // Gate call protection. Specifies which privilege Level the calling Descriptor minimum should have.
 #define IDT_PRESENT(x) (((x) & 0x01) << 0x07) // 0 for unused interrupts.
 
-#define IDT_INTERRUPT IDT_TYPE(1110b) | IDT_STORAGE_SEG(0b) | IDT_DESC_PRIVILEGE(00b) | IDT_PRESENT(1b)
-#define IDT_TRAP IDT_TYPE(1111b) | IDT_STORAGE_SEG(0b) | IDT_DESC_PRIVILEGE(00b) | IDT_PRESENT(1b)
+#define IDT_INTERRUPT IDT_TYPE(0b1110) | IDT_STORAGE_SEG(0) | IDT_DESC_PRIVILEGE(0b00) | IDT_PRESENT(1)
+#define IDT_TRAP IDT_TYPE(0b1111) | IDT_STORAGE_SEG(0) | IDT_DESC_PRIVILEGE(0b00) | IDT_PRESENT(1)
 
 #endif //PYROS_IDTLIB_H

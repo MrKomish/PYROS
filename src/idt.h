@@ -23,18 +23,18 @@ void init_idt(void)
 
     /* Init irq */
     for (size_t i = 0; i < IDTSIZE; i++) {
-        init_idt_desc(0x08, (uint32_t) _asm_schedule, INTGATE, &kidt[i]); //
+        init_idt_desc(0x08, (uint32_t) _asm_schedule, IDT_INTERRUPT, &kidt[i]); //
     }
 
     /* Vectors  0 -> 31 are for exceptions */
-    init_idt_desc(0x08, (uint32_t) _asm_exc_GP, INTGATE, &kidt[13]);
-    init_idt_desc(0x08, (uint32_t) _asm_exc_PF, INTGATE, &kidt[14]);
+    init_idt_desc(0x08, (uint32_t) _asm_exc_GP, IDT_INTERRUPT, &kidt[13]);
+    init_idt_desc(0x08, (uint32_t) _asm_exc_PF, IDT_INTERRUPT, &kidt[14]);
 
-    init_idt_desc(0x08, (uint32_t) _asm_schedule, INTGATE, &kidt[32]);
-    init_idt_desc(0x08, (uint32_t) _asm_int_1, INTGATE, &kidt[33]);
+    init_idt_desc(0x08, (uint32_t) _asm_schedule, IDT_INTERRUPT, &kidt[32]);
+    init_idt_desc(0x08, (uint32_t) _asm_int_1, IDT_INTERRUPT, &kidt[33]);
 
-    init_idt_desc(0x08, (uint32_t) _asm_syscalls, TRAPGATE, &kidt[48]);
-    init_idt_desc(0x08, (uint32_t) _asm_syscalls, TRAPGATE, &kidt[128]); //48
+    init_idt_desc(0x08, (uint32_t) _asm_syscalls, IDT_TRAP, &kidt[48]);
+    init_idt_desc(0x08, (uint32_t) _asm_syscalls, IDT_TRAP, &kidt[128]); //48
 
     /* Copy the IDT to the memory */
     memcpy((char *) IDT.base, (char *) kidt, IDT.limite);

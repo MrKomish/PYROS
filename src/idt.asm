@@ -7,8 +7,14 @@ global int_ignore
 
 ; default interrupt handler
 int_ignore:
+    push ebp
+    mov ebp, esp
+
     push int_ignore_msg
     call kprint
+
+    mov esp, ebp
+    pop ebp
 
 	iret
 

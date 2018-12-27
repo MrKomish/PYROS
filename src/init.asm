@@ -1,7 +1,7 @@
-[GLOBAL kenter]
+global kenter
 
-[EXTERN gdt_init]
-[EXTERN kmain]
+extern gdt_init
+extern kmain
 
 KERNEL_STACK_SIZE equ 4096
 

@@ -31,7 +31,26 @@ void init_idt_desc(uint16_t selector, uint32_t offset, uint8_t type_attr, idt_de
 #define IDT_DESC_PRIVILEGE(x) (((x) & 0x02) << 0x05) // Gate call protection. Specifies which privilege Level the calling Descriptor minimum should have.
 #define IDT_PRESENT(x) (((x) & 0x01) << 0x07) // 0 for unused interrupts.
 
-#define IDT_INTERRUPT IDT_TYPE(0b1110) | IDT_STORAGE_SEG(0) | IDT_DESC_PRIVILEGE(0b00) | IDT_PRESENT(1)
-#define IDT_TRAP IDT_TYPE(0b1111) | IDT_STORAGE_SEG(0) | IDT_DESC_PRIVILEGE(0b00) | IDT_PRESENT(1)
+/**
+ * INTEL IDT TYPES
+ * @see https://www.oreilly.com/library/view/understanding-the-linux/0596005652/ch04s02.html
+ */
+
+// Issued by I/O devices
+#define IDT_INTEL_INTERRUPT_GATE IDT_TYPE(0b1110) | IDT_STORAGE_SEG(0) | IDT_PRESENT(1)
+
+// Reported immediately following the execution of the trapping instruction
+// After the kernel returns control to the program, it is allowed to continue its execution with no loss of continuity.
+#define IDT_INTEL_TRAP_GATE IDT_TYPE(0b1111) | IDT_STORAGE_SEG(0) | IDT_PRESENT(1)
+
+// When an interrupt/exception occurs whose entry is a Task Gate, a task switch results. Mostly unused
+#define IDT_INTEL_TASK_GATE IDT_TYPE(0b0101)| IDT_STORAGE_SEG(1) | IDT_PRESENT(1)
+
+/**
+ * PRIVILEGE IDT LEVELS
+ */
+
+#define IDT_KERNEL_PRIVILEGE IDT_DESC_PRIVILEGE(0b00)
+#define IDT_USER_PRIVILEGE IDT_DESC_PRIVILEGE(0b11)
 
 #endif //PYROS_IDTLIB_H

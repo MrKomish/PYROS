@@ -33,12 +33,11 @@ uint64_t timer_counter = 0;
 
 void timer_handler()
 {
-        kprint("HI");
-    timer_counter++; // Increments the variable by 1 every interrupt fired by the PIT
+    kprint("HI");
+    timer_counter++;
 }
 
 void init_timer()
 {
     timer_set(TIMER_FREQUENCY);
-    init_intr_gate(0, (uint32_t) timer_handler); // Registers timer_handler to IRQ 0
 }

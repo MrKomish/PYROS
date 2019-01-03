@@ -1,6 +1,7 @@
 #include "idtlib.h"
 #include "gdt.h"
 #include "idt.h"
+#include "timer.h"
 
 idt_t IDT = {0};
 idt_desc_t kidt[IDTSIZE] = {0};
@@ -10,9 +11,11 @@ void init_idt(void) {
     IDT.base = IDTBASE;
 
     /* Init irq */
-    for (size_t i = 0; i < IDTSIZE; i++) {
-        init_idt_desc(0x08, (uint32_t) int_ignore, IDT_INTERRUPT_GATE, &kidt[i]); //
+    for (uint8_t i = 0; i < IDTSIZE; i++) {
+        init_intr_gate(i, (uint32_t) int_ignore);
     }
+
+    init_intr_gate(0x00, (uint32_t) timer_handler); // Registers timer_handler to IRQ 0
 
     /*init_idt_desc(0x08, (uint32_t) _asm_exc_GP, IDT_INTERRUPT, &kidt[13]);
     init_idt_desc(0x08, (uint32_t) _asm_exc_PF, IDT_INTERRUPT, &kidt[14]);

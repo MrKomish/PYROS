@@ -7,10 +7,11 @@
 
 void kmain() {
     init_idt();
+    term_init();
+
     init_timer();
 
     // Initiate terminal
-    term_init();
 
     __asm__("int $0x80");
 

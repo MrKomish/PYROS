@@ -41,23 +41,23 @@ idt_t IDT;
 idt_desc_t kidt[IDTSIZE];
 
 static inline void init_intr_gate(uint8_t n, uint32_t addr) {
-    init_idt_desc(GDT_CODE_KENREL, addr, IDT_INTERRUPT_GATE, &kidt[n]);
+    init_idt_desc(GDT_CODE_KERNEL_SELECTOR, addr, IDT_INTERRUPT_GATE, &kidt[n]);
 }
 
-static inline  void init_system_gate(uint8_t n, uint32_t addr) {
-    init_idt_desc(GDT_CODE_KENREL, addr, IDT_SYSTEM_GATE, &kidt[n]);
+static inline void init_system_gate(uint8_t n, uint32_t addr) {
+    init_idt_desc(GDT_CODE_KERNEL_SELECTOR, addr, IDT_SYSTEM_GATE, &kidt[n]);
 }
 
-static inline  void init_system_intr_gate(uint8_t n, uint32_t addr) {
-    init_idt_desc(GDT_CODE_KENREL, addr, IDT_SYSTEM_INTERRUPT_GATE, &kidt[n]);
+static inline void init_system_intr_gate(uint8_t n, uint32_t addr) {
+    init_idt_desc(GDT_CODE_KERNEL_SELECTOR, addr, IDT_SYSTEM_INTERRUPT_GATE, &kidt[n]);
 }
 
-static inline  void init_trap_gate(uint8_t n, uint32_t addr) {
-    init_idt_desc(GDT_CODE_KENREL, addr, IDT_TRAP_GATE, &kidt[n]);
+static inline void init_trap_gate(uint8_t n, uint32_t addr) {
+    init_idt_desc(GDT_CODE_KERNEL_SELECTOR, addr, IDT_TRAP_GATE, &kidt[n]);
 }
 
-static inline  void init_task_gate(uint8_t n, uint32_t addr) {
-    init_idt_desc(GDT_CODE_KENREL, addr, IDT_TASK_GATE, &kidt[n]);
+static inline void init_task_gate(uint8_t n, uint32_t addr) {
+    init_idt_desc(GDT_CODE_KERNEL_SELECTOR, addr, IDT_TASK_GATE, &kidt[n]);
 }
 
 void int_ignore();

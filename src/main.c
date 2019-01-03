@@ -3,9 +3,11 @@
 #include "main.h"
 #include "kprint.h"
 #include "idt.h"
+#include "timer.h"
 
 void kmain() {
     init_idt();
+    init_timer();
 
     // Initiate terminal
     term_init();

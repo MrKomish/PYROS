@@ -38,13 +38,13 @@ $ ./build.sh
 Running:
 
 ```
-qemu-system-i386 -kernel cmake-build-debug/pyros.elf -monitor stdio
+$ qemu-system-i386 -kernel cmake-build-debug/pyros.elf -monitor stdio
 ```
 
 Debugging:
 
 ```
-qemu-system-i386 -S -gdb tcp::1234 -kernel cmake-build-debug/pyros.elf -monitor stdio
+$ qemu-system-i386 -S -gdb tcp::1234 -kernel cmake-build-debug/pyros.elf -monitor stdio
 ```
 And in gdb
 ```

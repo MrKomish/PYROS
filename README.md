@@ -22,7 +22,7 @@ Files:
 ## Requirements
 
 * CMake & Make
-* i686-elf-gcc
+* Cross-Compiled i686-elf-gcc
 * qemu-system-i386
 
 Clion is Highly Recommended

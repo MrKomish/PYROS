@@ -15,22 +15,11 @@ void init_idt(void) {
         init_intr_gate(i, (uint32_t) int_ignore);
     }
 
-    init_intr_gate(0x00, (uint32_t) timer_handler); // Registers timer_handler to IRQ 0
-
-    /*init_idt_desc(0x08, (uint32_t) _asm_exc_GP, IDT_INTERRUPT, &kidt[13]);
-    init_idt_desc(0x08, (uint32_t) _asm_exc_PF, IDT_INTERRUPT, &kidt[14]);
-
-    init_idt_desc(0x08, (uint32_t) _asm_schedule, IDT_INTERRUPT, &kidt[32]);
-    init_idt_desc(0x08, (uint32_t) _asm_int_1, IDT_INTERRUPT, &kidt[33]);
-
-    init_idt_desc(0x08, (uint32_t) _asm_syscalls, IDT_TRAP, &kidt[48]);
-    init_idt_desc(0x08, (uint32_t) _asm_syscalls, IDT_TRAP, &kidt[128]); //48*/
+    init_intr_gate(0x20, (uint32_t) timer_handler);
 
     /* Copy the IDT to the memory */
     memcpy((char *) IDT.base, (char *) kidt, IDT.limite);
 
     /* Load the IDTR registry */
     __asm__ __volatile__("lidtl (IDT)");
-
-    // TODO init PIC
 }

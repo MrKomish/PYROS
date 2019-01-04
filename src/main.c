@@ -4,16 +4,19 @@
 #include "kprint.h"
 #include "idt.h"
 #include "timer.h"
+#include "irq.h"
+#include "io.h"
 
 void kmain() {
-    init_idt();
-    term_init();
+    term_init(); // Initiate terminal
 
+    init_idt();
+    init_irq();
+
+    enable_interrupts();
     init_timer();
 
-    // Initiate terminal
-
-    __asm__("int $0x80");
+    // __asm__("int $0x80");
 
     // Display some messages
     kprint("Hello, World!\n");

@@ -9,9 +9,13 @@
  */
 
 #include <stdint.h>
-#include "ioport.h"
+#include <stdbool.h>
+#include "io.h"
 #include "idt.h"
 #include "kprint.h"
+#include "timer.h"
+#include "irq.h"
+
 
 #define PIT_FREQUENCY (1193180) // Hz
 
@@ -20,9 +24,9 @@
 
 #define TIMER_FREQUENCY (100)
 
-void timer_set(int hz)
+void timer_set(uint32_t freq)
 {
-    int divisor = PIT_FREQUENCY / hz;
+    uint32_t divisor = PIT_FREQUENCY / freq;
 
     outb(PIT_CMDREG , 0x36);
     outb(PIT_CHANNEL0, (uint8_t) (divisor & 0xFF));
@@ -31,13 +35,16 @@ void timer_set(int hz)
 
 uint64_t timer_counter = 0;
 
-void timer_handler()
+__attribute__ ((interrupt)) void timer_handler(interrupt_frame* frame)
 {
     kprint("HI");
     timer_counter++;
+
+    pic_send_eoi(0);
 }
 
 void init_timer()
 {
     timer_set(TIMER_FREQUENCY);
+    irq_clear_mask(PIC_IRQ_TIMER);
 }

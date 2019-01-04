@@ -11,13 +11,11 @@ SET(CMAKE_CXX_COMPILER i686-elf-g++)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -ffreestanding")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ffreestanding")
+# TODO remove -mgeneral-regs-only in the future
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -ffreestanding -mgeneral-regs-only")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ffreestanding -mgeneral-regs-only")
 
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -nostdlib" )
-
-#set(CMAKE_C_COMPILER_WORKS 1)
-#set(CMAKE_CXX_COMPILER_WORKS 1)
 
 # search for programs in the build host directories
 SET(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)

@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include <stddef.h>
 #include "kprint.h"
+#include "timer.h"
 
 #define MAX_TASKS (0xff)
 #define ERR_TASK_START ((uint8_t) 0x1)
@@ -24,34 +25,80 @@ typedef uint32_t pid_t;
 typedef struct task_t {
     pid_t pid; // Task id
     task_state_t state;
+    void *next_instr; // next instruction to run address
 } task_t;
 
-void program1() {
-    kprint("A");
+int program1() {
+    static uint16_t i = 0;
+    while (1) {
+        i++;
+        if (i == 0){
+            kprint("A");
+        }
+        //kprint("A");
+    }
+    return 0;
 }
 
-void program2() {
-    kprint("B");
+int program2() {
+    static uint16_t j = 0;
+    while (1) {
+        j++;
+        if (j == 0){
+            kprint("B");
+        }
+        // kprint("B");
+    }
+    return 0;
 }
 
 task_t tasks[MAX_TASKS] = {0};
 uint32_t tasks_amount = 0;
 
-uint8_t start_task(int (*task_code)()) {
+task_t* start_task(int (*task_code)()) {
     if (tasks_amount == MAX_TASKS) {
-        return -ERR_TASK_START;
+        return (task_t *) -ERR_TASK_START;
     }
 
-    tasks[tasks_amount].pid = tasks_amount;
-    tasks[tasks_amount].state = TASK_RUNNING;
+    task_t* task = &tasks[tasks_amount];
+
+    task->pid = tasks_amount;
+    task->state = TASK_RUNNING;
+    task->next_instr = task_code;
 
     tasks_amount += 1;
 
-    return 0;
+    return task;
 }
 
-task_t* current_task = NULL;
+uint32_t current_task_index = 0;
+
+#define current (&tasks[current_task_index])
+
+void next_task() {
+    current_task_index++;
+
+    if (current_task_index == tasks_amount) {
+        current_task_index = 0;
+    }
+}
+
+void sched(timer_int_frame_t* frame) {
+    kprint("\nSWITCH\n");
+    current->next_instr = frame->eip;
+    next_task();
+    frame->eip = current->next_instr;
+}
 
 void sched_init() {
+    register_timer_handler(sched);
 
+    task_t* task1 = start_task(program1);
+    task_t* task2 = start_task(program2);
+
+    current_task_index = 0;
+}
+
+void sched_start() {
+    __asm__ __volatile__ ("jmp *%0" :: "r"(current->next_instr):);
 }

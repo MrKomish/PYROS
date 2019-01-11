@@ -17,12 +17,6 @@
  */
 void pic_remap(uint8_t offset1, uint8_t offset2)
 {
-    unsigned char a1, a2;
-
-    // Save interrupt masks.
-    a1 = inb(PIC1_DATA);
-    a2 = inb(PIC2_DATA);
-
     // Send command: Begin 3-byte initialization sequence.
     outb(PIC1_COMMAND, ICW1_INIT | ICW1_ICW4);
     io_wait();
@@ -47,8 +41,7 @@ void pic_remap(uint8_t offset1, uint8_t offset2)
     outb(PIC2_DATA, ICW4_8086);
     io_wait();
 
-    outb(PIC1_DATA, a1);   // restore saved masks.
-    outb(PIC2_DATA, a2);
+    pic_set_mask(IRQ_MASK_DISABLE_ALL_INTERRUPTS);
 }
 
 void init_irq() {
@@ -59,13 +52,15 @@ void init_irq() {
  * Send end of interrupt command
  * @param irq
  */
-void pic_send_eoi(unsigned char irq)
+void pic_send_eoi(uint8_t irq)
 {
     if(irq >= 8) {
         outb(PIC2_COMMAND, PIC_EOI);
+        io_wait();
     }
 
     outb(PIC1_COMMAND, PIC_EOI);
+    io_wait();
 }
 
 /**
@@ -75,35 +70,28 @@ void pic_send_eoi(unsigned char irq)
  *
  * @param IRQline - Line to mask
  */
-void irq_set_mask(unsigned char IRQline) {
-    port_t port;
-    uint8_t value;
-
-    if(IRQline < 8) {
-        port = PIC1_DATA;
-    } else {
-        port = PIC2_DATA;
-        IRQline -= 8;
-    }
-    value = (uint8_t) (inb(port) | (1 << IRQline));
-    outb(port, value);
+void pic_set_mask(uint16_t mask) {
+    outb(PIC1_DATA, (uint8_t) (mask & 0xff));
+    io_wait();
+    outb(PIC2_DATA, (uint8_t) (mask >> 8));
+    io_wait();
 }
 
-/**
- * @param IRQline - Line to unmask
- */
-void irq_clear_mask(unsigned char IRQline) {
-    port_t port;
-    uint8_t value;
+uint16_t pic_get_mask()
+{
+    return inb(PIC1_DATA) | (inb(PIC2_DATA) << 8);
+}
 
-    if(IRQline < 8) {
-        port = PIC1_DATA;
-    } else {
-        port = PIC2_DATA;
-        IRQline -= 8;
-    }
-    value = (uint8_t) (inb(port) & ~(1 << IRQline));
-    outb(port, value);
+void irq_enable(uint8_t irq) {
+    uint16_t intmask = pic_get_mask();
+    intmask = irq_mask_enable(intmask, irq);
+    pic_set_mask(intmask);
+}
+
+void irq_disable(uint8_t irq) {
+    uint16_t intmask = pic_get_mask();
+    intmask = irq_mask_disable(intmask, irq);
+    pic_set_mask(intmask);
 }
 
 /**

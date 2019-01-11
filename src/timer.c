@@ -15,14 +15,7 @@
 #include "kprint.h"
 #include "timer.h"
 #include "irq.h"
-
-
-#define PIT_FREQUENCY (1193180) // Hz
-
-#define PIT_CHANNEL0      0x40  //PIT Channel 0's Data Register Port
-#define PIT_CMDREG        0x43  //PIT Chip's Command Register Port
-
-#define TIMER_FREQUENCY (100)
+#include "init.h"
 
 void timer_set(uint32_t freq)
 {
@@ -35,16 +28,40 @@ void timer_set(uint32_t freq)
 
 uint64_t timer_counter = 0;
 
-__attribute__ ((interrupt)) void timer_handler(interrupt_frame* frame)
+__attribute__ ((interrupt)) void timer_handler(timer_int_frame_t* frame)
 {
-    kprint("HI");
     timer_counter++;
 
-    pic_send_eoi(0);
+    call_timer_handlers(frame);
+    pic_send_eoi(PIC_IRQ_TIMER);
 }
 
 void init_timer()
 {
     timer_set(TIMER_FREQUENCY);
-    irq_clear_mask(PIC_IRQ_TIMER);
+    irq_enable(PIC_IRQ_TIMER);
+}
+
+/**
+ * Timer handlers
+ */
+
+timer_handler_t timer_handlers[TIMER_HANDLERS_MAX_AMOUNT] = { 0 };
+
+size_t timer_handlers_amount = 0;
+
+void register_timer_handler(timer_handler_t handler) {
+    if (timer_handlers_amount == TIMER_HANDLERS_MAX_AMOUNT) {
+        kprint("Max amount of timer handlers reached");
+        kexit();
+    }
+
+    timer_handlers[timer_handlers_amount] = handler;
+    timer_handlers_amount++;
+}
+
+void call_timer_handlers(timer_int_frame_t* frame) {
+    for (size_t i = 0; i < timer_handlers_amount; i++) {
+        timer_handlers[i](frame);
+    }
 }

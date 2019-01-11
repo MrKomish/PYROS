@@ -27,10 +27,22 @@
 #define PIC_IRQ_TIMER 0
 #define PIC_IRQ_KEYBOARD 1
 
+#define irq_mask_enable(current_mask, intno) \
+    ((uint16_t) ((current_mask) & ~(1 << (intno))))
+
+#define irq_mask_disable(current_mask, intno) \
+    ((uint16_t) ((current_mask) | (1 << (intno))))
+
+#define IRQ_MASK_ENABLE_ALL_INTERRUPTS  0x0000
+#define IRQ_MASK_DISABLE_ALL_INTERRUPTS 0xffff
+
 void init_irq();
 void pic_remap(uint8_t offset1, uint8_t offset2);
-void pic_send_eoi(unsigned char irq);
-void irq_set_mask(unsigned char IRQline);
-void irq_clear_mask(unsigned char IRQline);
+void pic_send_eoi(uint8_t irq);
+
+void pic_set_mask(uint16_t mask);
+uint16_t pic_get_mask();
+void irq_enable(uint8_t irq_line);
+void irq_disable(uint8_t irq_line);
 
 #endif //PYROS_IRQ_H

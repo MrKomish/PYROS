@@ -62,6 +62,7 @@ static inline void init_task_gate(uint8_t n, uint32_t addr) {
 
 void int_ignore();
 void int_time_tick();
+void int_keyboard();
 
 void init_idt(void);
 

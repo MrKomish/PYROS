@@ -1,4 +1,5 @@
 global kenter
+global kexit
 
 extern gdt_init
 extern kmain
@@ -13,14 +14,14 @@ align 4
 
 		mov esp, kstack_top
 
-        call gdt_init
-
 		push edx
 		push ebx
 		call kmain
 
 	hang:
+		jmp hang
 
+	kexit:
         cli ; Disable CPU interrupts
         hlt ; Halt the CPU
 		jmp hang

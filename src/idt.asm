@@ -14,22 +14,9 @@ int_ignore:
 
     sub esp, 4
 
+    ; debugging only
     push int_ignore_msg
     call kprint
-
-    leave
-	iret
-
-int_time_tick:
-    push ebp
-    mov ebp, esp
-
-    sub esp, 4
-
-    push int_ignore_msg
-    call kprint
-
-    call pic_send_eoi
 
     leave
 	iret

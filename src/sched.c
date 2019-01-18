@@ -28,6 +28,13 @@ typedef struct task_t {
     void *next_instr; // next instruction to run address
 } task_t;
 
+/**
+ * Task registers
+ */
+typedef struct task_regs_t {
+    uint32_t eax, ebx, ecx, edx, esi, edi, esp, ebp, eip, eflags, cr3;
+} task_regs_t;
+
 int program1() {
     static uint16_t i = 0;
     while (1) {
@@ -87,7 +94,7 @@ void sched(timer_int_frame_t* frame) {
     kprint("\nSWITCH\n");
     current->next_instr = frame->eip;
     next_task();
-    frame->eip = current->next_instr;
+    // TODO continue after paging frame->eip = current->next_instr;
 }
 
 void sched_init() {

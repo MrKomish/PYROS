@@ -7,9 +7,14 @@
 #include "irq.h"
 #include "io.h"
 #include "sched.h"
+#include "init.h"
+#include "mem.h"
 
-void kmain() {
+void kmain(multiboot_info_t* mbd, uint32_t magic) {
+
     term_init(); // Initiate terminal
+
+    kinit_memory(mbd);
 
     gdt_init();
 

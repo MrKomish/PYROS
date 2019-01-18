@@ -9,6 +9,8 @@
 #error "This code must be compiled with an x86-elf compiler"
 #endif
 
-void kmain();
+#include "multiboot.h"
+
+void kmain(multiboot_info_t* mbd, uint32_t magic);
 
 #endif //PYROS_MAIN_H

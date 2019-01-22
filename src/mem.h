@@ -1,3 +1,8 @@
+#pragma once
+
+#ifndef MEM_H
+#define MEM_H
+
 #include <stdint.h>
 #include "multiboot.h"
 #include "kprint.h"
@@ -18,3 +23,5 @@ uint16_t memory_areas_count;
 
 void save_memory_ares(multiboot_info_t* mbd);
 void kinit_memory(multiboot_info_t* mbd);
+
+#endif //MEM_H

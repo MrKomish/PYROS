@@ -9,6 +9,7 @@
 #include "sched.h"
 #include "init.h"
 #include "mem.h"
+#include "paging.h"
 
 void kmain(multiboot_info_t* mbd, uint32_t magic) {
 
@@ -20,6 +21,9 @@ void kmain(multiboot_info_t* mbd, uint32_t magic) {
 
     init_idt();
     init_irq();
+
+    kinit_paging();
+
     enable_interrupts();
 
     sched_init();

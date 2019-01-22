@@ -7,9 +7,6 @@ global gdt_flush
 
 gdt_flush:
 
-    ; mov dword [0xb8000], 0x2f4b2f4f
-    ; hlt
-
     lgdt [GDT]
 
 	gdt_flush_code:

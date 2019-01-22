@@ -5,8 +5,8 @@
  * Note APIC may be used instead
  */
 
-#include "io.h"
-#include "kprint.h"
+#include "../io/io.h"
+#include "../io/kprint.h"
 #include "irq.h"
 
 /**

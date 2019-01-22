@@ -5,10 +5,10 @@
 
 #include <stdint.h>
 #include <stddef.h>
-#include "util.h"
+#include "../util.h"
 #include "idtlib.h"
-#include "gdtlib.h"
-#include "gdt.h"
+#include "../memory/gdtlib.h"
+#include "../memory/gdt.h"
 
 #define IDTBASE 0x00000000
 #define IDTSIZE 0xFF

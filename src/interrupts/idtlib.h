@@ -5,7 +5,7 @@
 
 #include <stdint.h>
 #include <stddef.h>
-#include "util.h"
+#include "../util.h"
 
 typedef struct idt_t {
 

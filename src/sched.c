@@ -1,6 +1,6 @@
 #include <stdint.h>
 #include <stddef.h>
-#include "kprint.h"
+#include "io/kprint.h"
 #include "timer.h"
 
 #define MAX_TASKS (0xff)

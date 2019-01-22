@@ -1,8 +1,8 @@
 #include "idtlib.h"
-#include "gdt.h"
+#include "../memory/gdt.h"
 #include "idt.h"
-#include "timer.h"
-#include "kprint.h"
+#include "../timer.h"
+#include "../io/kprint.h"
 #include "irq.h"
 
 idt_t IDT = {0};

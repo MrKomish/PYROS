@@ -1,4 +1,4 @@
-#include "multiboot.h"
+#include "../multiboot.h"
 #include "mem.h"
 
 memory_area_t memory_areas[MAX_MEMORY_AREAS_COUNT] = { 0 };

@@ -4,8 +4,8 @@
 #define MEM_H
 
 #include <stdint.h>
-#include "multiboot.h"
-#include "kprint.h"
+#include "../multiboot.h"
+#include "../io/kprint.h"
 
 #define MAX_MEMORY_AREAS_COUNT (256)
 

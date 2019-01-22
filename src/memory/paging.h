@@ -5,7 +5,7 @@
 
 #include <stdint.h>
 #include "mem.h"
-#include "control.h"
+#include "../control.h"
 
 /**
  * https://wiki.osdev.org/Paging

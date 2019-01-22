@@ -10,11 +10,11 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#include "io.h"
-#include "idt.h"
-#include "kprint.h"
+#include "io/io.h"
+#include "interrupts/idt.h"
+#include "io/kprint.h"
 #include "timer.h"
-#include "irq.h"
+#include "interrupts/irq.h"
 #include "init.h"
 
 void timer_set(uint32_t freq)

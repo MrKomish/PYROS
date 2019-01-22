@@ -24,7 +24,16 @@ endif()
 file(GLOB SOURCE_FILES
         "src/*.h"
         "src/*.c"
-        "src/*.asm")
+        "src/*.asm"
+        "src/interrupts/*.h"
+        "src/interrupts/*.c"
+        "src/interrupts/*.asm"
+        "src/io/*.h"
+        "src/io/*.c"
+        "src/io*.asm"
+        "src/memory/*.h"
+        "src/memory/*.c"
+        "src/memory/*.asm")
 
 add_executable(pyros.elf ${SOURCE_FILES})
 

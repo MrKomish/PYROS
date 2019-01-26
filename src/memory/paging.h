@@ -41,6 +41,8 @@ typedef uint32_t page_table_t;
 uint32_t k_base_physical_page_addr;
 uint32_t k_end_physical_page_addr;
 
+uint32_t unused_page_addr;
+
 /**
  * Kernel pages
  * This basic setup limits the kernel memory to 4mib of memory

@@ -94,7 +94,7 @@ void sched(timer_int_frame_t* frame) {
     kprint("\nSWITCH\n");
     current->next_instr = frame->eip;
     next_task();
-    // TODO continue after paging frame->eip = current->next_instr;
+    // frame->eip = current->next_instr;
 }
 
 void sched_init() {

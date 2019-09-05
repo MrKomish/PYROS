@@ -107,5 +107,5 @@ void sched_init() {
 }
 
 void sched_start() {
-    __asm__ __volatile__ ("jmp *%0" :: "r"(current->next_instr):);
+    asm volatile ("jmp *%0" :: "r"(current->next_instr):);
 }

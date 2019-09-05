@@ -23,7 +23,7 @@ void init_idt(void) {
 
     /* Init irq */
     for (uint8_t i = 0; i < IDTSIZE; i++) {
-        init_intr_gate(i, (uint32_t) int_ignore);
+        init_intr_gate(i, (uint32_t) timer_handler);
     }
 
     init_intr_gate(0x20, (uint32_t) timer_handler);
@@ -33,5 +33,5 @@ void init_idt(void) {
     memcpy((char *) IDT.base, (char *) kidt, IDT.limite);
 
     /* Load the IDTR registry */
-    __asm__ __volatile__("lidtl (IDT)");
+    asm volatile("lidtl (IDT)");
 }

@@ -21,6 +21,9 @@ else()
     set(CMAKE_ASM_NASM_FLAGS "${ASM_NASM_FLAGS}")
 endif()
 
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -masm=intel")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -masm=intel")
+
 file(GLOB SOURCE_FILES
         "src/*.h"
         "src/*.c"

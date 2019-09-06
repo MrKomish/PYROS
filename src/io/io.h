@@ -10,7 +10,7 @@ typedef uint16_t port_t;
  * Wait by writing to unused port 0x80
  */
 static inline void io_wait() {
-    __asm__ __volatile__ ( ATT_START "outb %%al, $0x80" ATT_END : : "a" (0) );
+    __asm__ __volatile__ ( "outb %%al, $0x80" : : "a" (0) );
 }
 
 /**
@@ -19,7 +19,7 @@ static inline void io_wait() {
  * @param val
  */
 static inline void outb(port_t port, uint8_t val) {
-    __asm__ __volatile__ (ATT_START "outb %%al, %%dx" ATT_END : : "d" (port), "a" (val));
+    __asm__ __volatile__ ( "outb %%al, %%dx" : : "d" (port), "a" (val));
 }
 
 /**
@@ -28,7 +28,7 @@ static inline void outb(port_t port, uint8_t val) {
  * @param val
  */
 static inline void outw(port_t port, uint16_t val) {
-    __asm__ __volatile__ ( "outw %%dx, %%ax"  : : "d" (port), "a" (val));
+    __asm__ __volatile__ ( INTEL_START "outw %%dx, %%ax" INTEL_END : : "d" (port), "a" (val));
 }
 
 /**
@@ -37,7 +37,7 @@ static inline void outw(port_t port, uint16_t val) {
  * @param val
  */
 static inline void outl(port_t port, uint32_t val) {
-    __asm__ __volatile__ ( "outl %%dx, %%eax"  : : "d" (port), "a" (val));
+    __asm__ __volatile__ ( INTEL_START "outl %%dx, %%eax" INTEL_END : : "d" (port), "a" (val));
 }
 
 /**
@@ -47,7 +47,7 @@ static inline void outl(port_t port, uint32_t val) {
  */
 static inline uint8_t inb(port_t port) {
     uint8_t ret;
-    __asm__ __volatile__ ( ATT_START "inb %%dx, %%al" ATT_END : "=a" (ret): "d" (port));
+    __asm__ __volatile__ ( "inb %%dx, %%al" : "=a" (ret): "d" (port));
     return ret;
 }
 
@@ -58,7 +58,7 @@ static inline uint8_t inb(port_t port) {
  */
 static inline uint16_t inw(port_t port) {
     uint16_t ret;
-    __asm__ __volatile__ ( "inb %%ax, %%dx"  : "=a" (ret): "d" (port));
+    __asm__ __volatile__ ( INTEL_START "inb %%ax, %%dx" INTEL_END : "=a" (ret): "d" (port));
     return ret;
 }
 
@@ -69,18 +69,18 @@ static inline uint16_t inw(port_t port) {
  */
 static inline uint32_t inl(port_t port) {
     uint32_t ret;
-    __asm__ __volatile__ ( "inl %%eax, %%dx"  : "=a" (ret) : "d" (port));
+    __asm__ __volatile__ ( INTEL_START "inl %%eax, %%dx" INTEL_END : "=a" (ret) : "d" (port));
     return ret;
 }
 
 static inline void enable_interrupts ()
 {
-    __asm__ __volatile__ ( "sti" );
+    __asm__ __volatile__ ( INTEL_START "sti" INTEL_END );
 }
 
 static inline void disable_interrupts ()
 {
-    __asm__ __volatile__ ( "cli" );
+    __asm__ __volatile__ ( INTEL_START "cli" INTEL_END );
 }
 
 //

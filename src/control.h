@@ -9,6 +9,7 @@
 #define CONTROL_H
 
 #include <stdint.h>
+#include "util.h"
 
 #define CR0_PROTECTED_MODE (1) // If 1, system is in protected mode, else system is in real mode
 #define CR0_MONITOR_CO_PROCESSOR (1 << 1) // Controls interaction of WAIT/FWAIT instructions with TS flag in CR0
@@ -25,17 +26,17 @@
 typedef uint32_t cr0_value;
 
 static inline void set_cr0(cr0_value value) {
-    asm volatile ("mov %%cr0, %0" :: "r" (value));
+    asm volatile ( INTEL_START "mov %%cr0, %0" INTEL_END :: "r" (value));
 }
 
 static inline cr0_value get_cr0() {
     uint32_t value;
-    asm volatile ("mov %0, %%cr0" : "=r" (value) :);
+    asm volatile ( INTEL_START "mov %0, %%cr0" INTEL_END : "=r" (value) :);
     return value;
 }
 
 static inline void set_page_directory(const uint32_t page_dir) {
-    asm volatile ("mov %%cr3, %0" :: "r" (page_dir));
+    asm volatile ( INTEL_START "mov %%cr3, %0" INTEL_END :: "r" (page_dir));
 }
 
 #endif //CONTROL_H

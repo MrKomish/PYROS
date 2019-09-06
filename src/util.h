@@ -6,6 +6,9 @@
 #define ATT_START ";.att_syntax;"
 #define ATT_END ";.intel_syntax;"
 
+#define INTEL_START ";.intel_syntax;"
+#define INTEL_END ";.att_syntax;"
+
 void *memcpy(char *dst, char *src, int n);
 void *memset(char *dst, char src, int n);
 

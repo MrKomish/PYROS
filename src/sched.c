@@ -2,6 +2,7 @@
 #include <stddef.h>
 #include "io/kprint.h"
 #include "timer.h"
+#include "util.h"
 
 #define MAX_TASKS (0xff)
 #define ERR_TASK_START ((uint8_t) 0x1)
@@ -107,5 +108,5 @@ void sched_init() {
 }
 
 void sched_start() {
-    asm volatile ("jmp *%0" :: "r"(current->next_instr):);
+    asm volatile ( "jmp *%0" :: "r"(current->next_instr):);
 }

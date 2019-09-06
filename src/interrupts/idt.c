@@ -33,5 +33,5 @@ void init_idt(void) {
     memcpy((char *) IDT.base, (char *) kidt, IDT.limite);
 
     /* Load the IDTR registry */
-    asm volatile("lidtl (IDT)");
+    // asm volatile(INTEL_START "lidtl (IDT)" INTEL_END);
 }
